@@ -126,10 +126,13 @@ Volg de onderstaande stappen om de virtuele omgeving in te stellen en de vereist
 Een virtuele omgeving helpt om de afhankelijkheden van het project gescheiden te houden van andere projecten.
 
 #### Voor Linux/macOS:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
+
+### Voor Windows
 
 ```bash
 python -m venv venv

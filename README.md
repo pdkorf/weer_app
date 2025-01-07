@@ -118,6 +118,40 @@ De applicatie gebruikt drie externe API's:
      - Grafieken
      - Kaartlocatie
 
+## Installatie-instructies
+
+Volg de onderstaande stappen om de virtuele omgeving in te stellen en de vereiste Python-pakketten te installeren.
+
+### 1. Virtuele omgeving instellen
+Een virtuele omgeving helpt om de afhankelijkheden van het project gescheiden te houden van andere projecten.
+
+#### Voor Linux/macOS:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Afhankelijkheden installeren
+
+```bash
+pip install -r requirements.txt
+```
+
+### Applicatie starten
+```bash
+python app.py
+```
+
+### Virtuele omgeving deactiveren
+```bash
+deactivate
+```
+
 ## Onderhoud
 
 ### API Sleutels

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Wizard Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/PdKnav.png') }}" alt="Logo" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                PDK Weather Pro
+            </a>
+        </div>
+    </nav>
+    <div class="container-fluid p-0">
+        <div class="weather-container">
+            <div class="city-background"></div>
+            <div class="content-overlay">
+                <div class="search-container text-center mb-4">
+                    <div class="input-group w-50 mx-auto">
+                        <input type="text" id="cityInput" class="form-control" placeholder="Voer een stad in...">
+                        <button class="btn btn-primary" onclick="searchCity()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="favorite-cities mt-3">
+                        {% for city in favorite_cities %}
+                        <button class="btn btn-outline-light me-2" onclick="loadWeather('{{ city }}')">
+                            {{ city }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="current-weather text-center">
+                    <h2 id="cityName" class="mb-4"></h2>
+                    <div class="weather-info">
+                        <div id="temperature" class="temp-large"></div>
+                        <div id="description" class="weather-description"></div>
+                        <div class="weather-details mt-3">
+                            <span id="humidity"><i class="fas fa-tint"></i></span>
+                            <span id="windspeed"><i class="fas fa-wind"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-display">
+                    <div class="forecast mt-4">
+                        <div class="row" id="forecastContainer"></div>
+                    </div>
+
+                    <div class="weather-graphs mt-4">
+                        <div class="graph-card">
+                            <canvas id="combinedChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="map-container mt-4">
+                        <div class="map-card">
+                            <div id="weatherMap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
